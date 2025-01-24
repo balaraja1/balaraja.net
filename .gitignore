@@ -1,0 +1,22 @@
+# Dependencies
+/node_modules
+.cache
+node_modules/.cache
+node_modules/.cache/gh-pages
+
+# Build output
+/public
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw? 
