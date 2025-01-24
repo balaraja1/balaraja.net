@@ -5,14 +5,19 @@
   "main": "build.js",
   "scripts": {
     "build": "node build.js",
-    "serve": "npx serve public"
+    "serve": "npx serve public",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "marked": "^4.0.0",
     "fs-extra": "^10.0.0",
-    "gray-matter": "^4.0.3"
+    "gray-matter": "^4.0.3",
+    "marked": "^4.0.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
