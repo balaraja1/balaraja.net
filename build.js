@@ -100,7 +100,7 @@ async function buildBlogIndex() {
     <div class="blog-list">
       ${postList.map(post => `
         <article class="blog-preview">
-          <h4><a href="blog/${post.url.replace('/blog/', '')}">${post.title}</a> - ${post.date}</h4>
+          <h4><a href="${post.url.replace('/blog/', '')}">${post.title}</a> - ${post.date}</h4>
         </article>
       `).join('')}
     </div>
