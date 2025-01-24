@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/blog">Blog</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/books.html">Books</a>
+        <a href="/contact.html">Contact</a>
+    </nav>
+    <main>
+        <article class="blog-post">
+            <h1>{{title}}</h1>
+            <time>{{date}}</time>
+            <div class="content">
+                {{content}}
+            </div>
+        </article>
+    </main>
+    <script src="/scripts/main.js"></script>
+</body>
+</html>

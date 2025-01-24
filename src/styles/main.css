@@ -1,0 +1,155 @@
+/* Base styles */
+:root {
+    --primary-color: #2563eb;
+    --text-color: #1f2937;
+    --background-color: #ffffff;
+    --card-background: #f3f4f6;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+}
+
+/* Navigation */
+nav {
+    padding: 1rem;
+    background-color: var(--background-color);
+    border-bottom: 1px solid #e5e7eb;
+    text-align: center;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 1rem;
+    padding: 0.5rem;
+}
+
+nav a:hover, nav a.active {
+    color: var(--primary-color);
+}
+
+/* Main content */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hero {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: #4b5563;
+}
+
+/* Quick links section */
+.quick-links {
+    margin-top: 3rem;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.card {
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-color);
+}
+
+.card p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    nav {
+        padding: 0.5rem;
+    }
+    
+    nav a {
+        margin: 0 0.5rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    main {
+        padding: 1rem;
+    }
+}
+
+.blog-list {
+    margin-top: 2rem;
+}
+
+.blog-preview {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.blog-preview h2 {
+    margin: 0;
+}
+
+.blog-preview time {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.blog-preview a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.blog-preview a:hover {
+    color: var(--primary-color);
+}
+
+.blog-post {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.blog-post time {
+    color: #6b7280;
+    display: block;
+    margin: 1rem 0;
+}
+
+.blog-post .content {
+    line-height: 1.8;
+}
