@@ -11,7 +11,7 @@ const getTemplate = async (templateName) => {
 // Function to build blog posts
 async function buildBlogPosts() {
   const postsDir = 'src/content/blog/posts';
-  const outputDir = 'public/blog';
+  const outputDir = 'docs/blog';
   const template = await getTemplate('blog-post');
   
   const posts = await fs.readdir(postsDir);
@@ -37,7 +37,7 @@ async function buildBlogPosts() {
 
 async function buildBlogIndex() {
   const postsDir = 'src/content/blog/posts';
-  const outputDir = 'public/blog';
+  const outputDir = 'docs/blog';
   const template = await getTemplate('base');
   
   // Read all posts and get their metadata
@@ -92,12 +92,12 @@ async function buildBlogIndex() {
 }
 
 async function build() {
-  // Create public directory
-  await fs.ensureDir('public');
+  // Create docs directory
+  await fs.ensureDir('docs');
   
   // Copy static assets
-  await fs.copy('src/styles', 'public/styles');
-  await fs.copy('src/scripts', 'public/scripts');
+  await fs.copy('src/styles', 'docs/styles');
+  await fs.copy('src/scripts', 'docs/scripts');
   
   // Build blog posts and index
   await buildBlogPosts();
