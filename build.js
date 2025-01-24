@@ -19,18 +19,45 @@ async function buildBlogPosts() {
   for (const post of posts) {
     if (post.endsWith('.md')) {
       const content = await fs.readFile(path.join(postsDir, post), 'utf-8');
-      const { data, content: markdown } = matter(content);
-      const html = marked(markdown);
+      const { data, content: markdownContent } = matter(content);
+      const html = marked(markdownContent);
       
-      const finalHtml = template
-        .replace('{{title}}', data.title)
-        .replace('{{date}}', data.date)
-        .replace('{{content}}', html);
-      
-      await fs.outputFile(
-        path.join(outputDir, `${post.replace('.md', '.html')}`),
-        finalHtml
-      );
+      const blogPostHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${data.title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <nav>
+        <a href="../">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../blog">Blog</a>
+        <a href="../bookshelf.html">Bookshelf</a>
+    </nav>
+    <main>
+        <article class="blog-post">
+            <h1>${data.title}</h1>
+            <time>${new Date(data.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            })}</time>
+            <div class="content">
+                ${marked(markdownContent)}
+            </div>
+        </article>
+    </main>
+</body>
+</html>`;
+
+      await fs.outputFile(path.join(outputDir, `${post.replace('.md', '.html')}`), blogPostHTML);
     }
   }
 }
@@ -67,26 +94,42 @@ async function buildBlogIndex() {
   // Sort posts by date (newest first)
   postList.sort((a, b) => new Date(b.date) - new Date(a.date));
   
-  // Create HTML for blog listing
+  // Create HTML for blog listing without the nav
   const blogListHTML = `
     <h2>Blog</h2>
     <div class="blog-list">
       ${postList.map(post => `
         <article class="blog-preview">
-          <h4><a href="${post.url}">${post.title}</a> - ${post.date}</h4>
+          <h4><a href="blog/${post.url.replace('/blog/', '')}">${post.title}</a> - ${post.date}</h4>
         </article>
       `).join('')}
     </div>
     <nav class="simple-nav">
-      <a href="/">Home</a>
-      <a href="/about.html">About</a>
-      <a href="/books.html">Books</a>
+      <a href="../">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../bookshelf.html">Bookshelf</a>
     </nav>
   `;
   
-  const finalHtml = template
-    .replace('{{title}}', 'Blog')
-    .replace('{{content}}', blogListHTML);
+  // Create final HTML without using the base template
+  const finalHtml = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <main>
+        ${blogListHTML}
+    </main>
+</body>
+</html>`;
   
   await fs.outputFile(path.join(outputDir, 'index.html'), finalHtml);
 }
