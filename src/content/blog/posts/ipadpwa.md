@@ -1,4 +1,3 @@
-
 ---
 title: A humbling and exhilarating experience as a brand new vibe coder
 date: 2025-02-22

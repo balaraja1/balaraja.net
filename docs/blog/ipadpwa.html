@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>undefined</title>
+    <title>A humbling and exhilarating experience as a brand new vibe coder</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -19,13 +19,10 @@
     </nav>
     <main>
         <article class="blog-post">
-            <h1>undefined</h1>
-            <time>Invalid Date</time>
+            <h1>A humbling and exhilarating experience as a brand new vibe coder</h1>
+            <time>February 21, 2025</time>
             <div class="content">
-                <hr>
-<h2 id="title-a-humbling-and-exhilarating-experience-as-a-brand-new-vibe-coder-date-2025-02-22">title: A humbling and exhilarating experience as a brand new vibe coder
-date: 2025-02-22</h2>
-<p>I had a humbling and exhilarating experience as a brand new &quot;AI vibe coding&quot; SW developer over the last 12ish hours. The task I set for myself to do starting around 8:30pm last night seemed simple: update <a href="https://learn.arrowraja.com">Arrow&#39;s basic static learning website</a> with a couple of new videos and figure out how to cache those videos locally on the iPad for our Sayulita trip. I naively assumed it would take an hour or two at most. However, the task extended to over seven hours!</p>
+                <p>I had a humbling and exhilarating experience as a brand new &quot;AI vibe coding&quot; SW developer over the last 12ish hours. The task I set for myself to do starting around 8:30pm last night seemed simple: update <a href="https://learn.arrowraja.com">Arrow&#39;s basic static learning website</a> with a couple of new videos and figure out how to cache those videos locally on the iPad for our Sayulita trip. I naively assumed it would take an hour or two at most. However, the task extended to over seven hours!</p>
 <p>First, I encountered a hurdle when YouTube changed its code, making it difficult to download videos using the usual methods. After spending about 30 minutes selecting four new videos—two phonics and two counting—I realized traditional KeepVid type web services no longer worked as expected. It took an additional hour, at least, to figure out how to use the command line tools yt-dlp and ffmpeg to get the job done.</p>
 <p>With the videos downloaded, integrating them into the code base was straightforward, taking about 10 to 15 minutes. But then the real challenge began: caching content on the iPad. Initially, I considered building an iPad app and putting it on TestFlight, but that would have been too complicated and among other things needed spending $99 on an Apple developer account. But then I dug in and discovered the awesomeness of progressive web apps (PWAs), which allow websites to function like standalone apps and enable caching.</p>
 <p>I added a manifest JSON to the root with necessary parameters and created a service worker JavaScript file. After setting it up, testing it on the iPad proved problematic—the videos wouldn&#39;t play full-screen. This started a painful cycle of code changes, commits, and deployment on Vercel, involving cache clearing and login verifications, only for the videos to still not work correctly. I probably did 6-8 iterations of fixes last night, mainly relying on Claude 3.5 Sonnet within Cursor. </p>
